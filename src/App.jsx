@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
+import Product from "./pages/Product";
 
 // Placeholder pages — replace with real pages in future phases
 const Placeholder = ({ title }) => (
@@ -53,7 +54,7 @@ export default function App() {
           path="/product"
           element={
             <Layout>
-              <Placeholder title="Product" />
+              <Product />
             </Layout>
           }
         />
