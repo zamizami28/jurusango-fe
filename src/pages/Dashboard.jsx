@@ -6,14 +6,14 @@ import {
   Target,
   CheckSquare,
 } from "lucide-react";
-
-// ─── Dummy Data ────────────────────────────────────────────────────────────────
+import { Link } from "react-router-dom";
+// ─── Dummy Data
 
 const USER = {
   name: "Vania",
   questsDone: 3,
   questsTotal: 5,
-  notifications: 3,
+  notifications: 99,
 };
 
 const STATS = [
@@ -56,7 +56,7 @@ const STATS = [
 ];
 
 const ASSESSMENT_UMUM = [
-  { subject: "Fisika", pct: 92 },
+  { subject: "Fisika", pct: 90 },
   { subject: "Matematika", pct: 88 },
   { subject: "Informatika", pct: 85 },
   { subject: "Ekonomi", pct: 84 },
@@ -81,7 +81,7 @@ const ACTIVE_QUESTS = [
     id: 2,
     title: "Teknik Informatika",
     badge: "PREMIUM",
-    pct: 20,
+    pct: 10,
     reward: "+500 XP",
   },
 ];
@@ -104,8 +104,8 @@ function StatCard({ icon, value, label, trend, trendPct, iconBg }) {
           {icon}
         </span>
         {trend === "up" && trendPct && (
-          <span className="flex items-center gap-0.5 text-xs font-semibold text-emerald-500">
-            <TrendingUp size={12} />
+          <span className="flex items-center gap-0.5 text-xl font-semibold text-emerald-500">
+            <TrendingUp size={14} />
             {trendPct}
           </span>
         )}
@@ -120,7 +120,7 @@ function StatCard({ icon, value, label, trend, trendPct, iconBg }) {
 
 function ProgressBar({ pct, color = "bg-slate-800" }) {
   return (
-    <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+    <div className="h-2 w-full bg-white rounded-full overflow-hidden">
       <div
         className={`h-full ${color} rounded-full transition-all duration-700`}
         style={{ width: `${pct}%` }}
@@ -129,15 +129,18 @@ function ProgressBar({ pct, color = "bg-slate-800" }) {
   );
 }
 
-function SectionCard({ title, children, action }) {
+function SectionCard({ title, children, action, linkTo }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-bold text-slate-800 text-sm">{title}</h2>
         {action && (
-          <button className="text-xs text-blue-600 font-semibold hover:underline whitespace-nowrap">
+          <Link
+            to={linkTo || "#"}
+            className="text-xs text-[#4282AA] font-semibold hover:underline whitespace-nowrap"
+          >
             {action} →
-          </button>
+          </Link>
         )}
       </div>
       {children}
@@ -153,7 +156,7 @@ export default function Dashboard() {
       {/* ── Header ── */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-100 px-6 py-4 flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-extrabold text-slate-800">
+          <h1 className="text-[25px] font-extrabold text-[#25485E]">
             Selamat Datang, {USER.name}!
           </h1>
           <p className="text-sm text-slate-500 mt-0.5">
@@ -163,18 +166,21 @@ export default function Dashboard() {
         </div>
         <div className="flex items-center gap-3">
           {/* Notification bell */}
-          <button className="relative w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors">
-            <Bell size={16} className="text-slate-600" />
+          <button className="relative w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors">
+            <Bell size={18} className="text-slate-600" />
             {USER.notifications > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+              <span className="absolute -top-1.5 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                 {USER.notifications}
               </span>
             )}
           </button>
           {/* Avatar */}
-          <div className="w-9 h-9 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center">
-            <User size={16} className="text-slate-500" />
-          </div>
+          <Link
+            to="/profile"
+            className="w-10 h-10 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center hover:bg-slate-300 transition-colors"
+          >
+            <User size={18} className="text-slate-500" />
+          </Link>
         </div>
       </div>
 
@@ -187,20 +193,20 @@ export default function Dashboard() {
 
       {/* ── Report Analytics ── */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
-        <h2 className="font-bold text-slate-800 text-sm mb-4">
+        <h2 className="font-bold text-slate-800 text-[16px] mb-4">
           Report Analytics &amp; Progress
         </h2>
 
         <div className="grid grid-cols-2 gap-6">
           {/* Asesmen Umum */}
-          <div>
+          <div className="bg-[#D8EAF3] rounded-2xl p-6">
             <p className="text-xs font-semibold text-slate-500 mb-3 text-center tracking-wide uppercase">
               Asesmen Umum
             </p>
             <div className="space-y-3">
               {ASSESSMENT_UMUM.map(({ subject, pct }) => (
                 <div key={subject} className="flex items-center gap-3">
-                  <span className="text-xs text-slate-600 font-medium w-24 shrink-0">
+                  <span className="text-xs text-slate-600 font-medium w-20 shrink-0">
                     {subject}
                   </span>
                   <div className="flex-1">
@@ -215,14 +221,14 @@ export default function Dashboard() {
           </div>
 
           {/* OVR Asesmen Jurusan */}
-          <div>
+          <div className="bg-[#D8EAF3] rounded-2xl p-6">
             <p className="text-xs font-semibold text-slate-500 mb-3 text-center tracking-wide uppercase">
-              Overall Rating (OVR) Asesmen Jurusan
+              Asesmen Jurusan
             </p>
             <div className="space-y-3">
               {OVR_JURUSAN.map(({ jurusan, score }) => (
                 <div key={jurusan} className="flex items-center gap-3">
-                  <span className="text-xs text-slate-600 font-medium w-32 shrink-0">
+                  <span className="text-xs text-slate-600 font-medium w-22 shrink-0">
                     {jurusan}
                   </span>
                   <div className="flex-1">
@@ -241,12 +247,16 @@ export default function Dashboard() {
       {/* ── Bottom Row: Active Quests + League ── */}
       <div className="grid grid-cols-2 gap-4 pb-6">
         {/* Active Major Quest */}
-        <SectionCard title="🎮 Active Major Quest" action="Lihat Semua">
+        <SectionCard
+          title="🎮 Active Major Quest"
+          action="Lihat Semua"
+          linkTo="/assessment"
+        >
           <div className="space-y-3">
             {ACTIVE_QUESTS.map((quest) => (
               <div
                 key={quest.id}
-                className="bg-slate-50 rounded-xl p-3 border border-slate-100"
+                className="bg-[#D8EAF3] rounded-xl p-3 border border-slate-100"
               >
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-sm font-bold text-slate-800">
@@ -278,12 +288,16 @@ export default function Dashboard() {
         </SectionCard>
 
         {/* Teknik Sipil League */}
-        <SectionCard title="🏆 Teknik Sipil League" action="Lihat Semua">
+        <SectionCard
+          title="🏆 Teknik Sipil League"
+          action="Lihat Semua"
+          linkTo="/leaderboard"
+        >
           <div className="space-y-2">
             {LEAGUE_RANKINGS.map(({ rank, name, xp, medal }) => (
               <div
                 key={rank}
-                className="flex items-center gap-3 bg-slate-50 rounded-xl px-3 py-2.5 border border-slate-100"
+                className="flex items-center gap-3 bg-[#D8EAF3] rounded-xl px-3 py-2.5 border border-slate-100"
               >
                 <span className="text-base w-6 text-center">{medal}</span>
                 <div className="w-8 h-8 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center shrink-0">

@@ -1,21 +1,21 @@
+import { useState } from "react";
 import Sidebar from "./Sidebar";
 
-/**
- * Layout wraps every page.
- * ┌──────────┬──────────────────────────────┐
- * │ Sidebar  │     Main content (scrollable) │
- * │ (fixed)  │                              │
- * └──────────┴──────────────────────────────┘
- */
 export default function Layout({ children }) {
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/40 to-blue-100/60 flex">
-      {/* Fixed left sidebar — 224px (w-56) */}
-      <Sidebar />
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50/40 to-blue-100/60 flex">
+      {/* Fixed left sidebar — 240px (w-60) */}
+      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 
       {/* Main scrollable area offset by sidebar width */}
-      <main className="ml-56 flex-1 min-h-screen overflow-y-auto">
-        <div className="p-6 max-w-[1200px]">{children}</div>
+      <main
+        className={`flex-1 min-h-screen overflow-y-auto transition-all duration-300 ease-in-out ${
+          isOpen ? "ml-60" : "ml-20"
+        }`}
+      >
+        <div className="p-6 max-w-full">{children}</div>
       </main>
     </div>
   );
