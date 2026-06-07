@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import Product from "./pages/Product";
+import Assessment from "./pages/Assessment";
+import TryOut from "./pages/TryOut";
 
 // Placeholder pages — replace with real pages in future phases
 const Placeholder = ({ title }) => (
@@ -30,7 +32,7 @@ export default function App() {
           path="/assessment"
           element={
             <Layout>
-              <Placeholder title="Assessment" />
+              <Assessment />
             </Layout>
           }
         />
@@ -38,7 +40,7 @@ export default function App() {
           path="/tryout"
           element={
             <Layout>
-              <Placeholder title="Try Out SNBT" />
+              <TryOut />
             </Layout>
           }
         />

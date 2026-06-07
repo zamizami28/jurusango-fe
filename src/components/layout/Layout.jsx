@@ -12,10 +12,10 @@ export default function Layout({ children }) {
       {/* Main scrollable area offset by sidebar width */}
       <main
         className={`flex-1 min-h-screen overflow-y-auto transition-all duration-300 ease-in-out ${
-          isOpen ? "ml-60" : "ml-20"
+          isOpen ? "ml-70" : "ml-50"
         }`}
       >
-        <div className="p-6 max-w-full">{children}</div>
+        <div className="p-6 max-w-340">{children}</div>
       </main>
     </div>
   );

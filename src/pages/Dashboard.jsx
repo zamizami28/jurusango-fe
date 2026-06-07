@@ -105,7 +105,7 @@ function StatCard({ icon, value, label, trend, trendPct, iconBg }) {
           {icon}
         </span>
         {trend === "up" && trendPct && (
-          <span className="flex items-center gap-0.5 text-xl font-semibold text-emerald-500">
+          <span className="flex items-center gap-0.5 sm:text-xs md:text-base lg:text-xl font-semibold text-emerald-500">
             <TrendingUp size={14} />
             {trendPct}
           </span>
@@ -134,7 +134,7 @@ function SectionCard({ title, children, action, linkTo }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="font-bold text-slate-800 text-sm">{title}</h2>
+        <h2 className="font-bold text-slate-800 text-base">{title}</h2>
         {action && (
           <Link
             to={linkTo || "#"}
@@ -211,7 +211,10 @@ export default function Dashboard() {
                     {subject}
                   </span>
                   <div className="flex-1">
-                    <ProgressBar pct={pct} color="bg-slate-700" />
+                    <ProgressBar
+                      pct={pct}
+                      color="bg-linear-to-r from-[#4585AC] to-[#1F3E51]"
+                    />
                   </div>
                   <span className="text-xs font-bold text-slate-700 w-8 text-right shrink-0">
                     {pct}%
@@ -229,11 +232,14 @@ export default function Dashboard() {
             <div className="space-y-3">
               {OVR_JURUSAN.map(({ jurusan, score }) => (
                 <div key={jurusan} className="flex items-center gap-3">
-                  <span className="text-xs text-slate-600 font-medium w-22 shrink-0">
+                  <span className="text-xs text-slate-600 font-medium w-24 shrink-0">
                     {jurusan}
                   </span>
                   <div className="flex-1">
-                    <ProgressBar pct={score} color="bg-slate-700" />
+                    <ProgressBar
+                      pct={score}
+                      color="bg-linear-to-r from-[#4585AC] to-[#1F3E51]"
+                    />
                   </div>
                   <span className="text-xs font-bold text-slate-700 w-6 text-right shrink-0">
                     {score}
@@ -260,7 +266,7 @@ export default function Dashboard() {
                 className="bg-[#D8EAF3] rounded-xl p-3 border border-slate-100"
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-sm font-bold text-slate-800">
+                  <span className="text-[16px] font-bold text-slate-800">
                     {quest.title}
                   </span>
                   {quest.badge && (
@@ -272,14 +278,14 @@ export default function Dashboard() {
                 <div className="mb-1.5">
                   <ProgressBar
                     pct={quest.pct}
-                    color={quest.pct >= 50 ? "bg-blue-700" : "bg-blue-400"}
+                    color={"bg-linear-to-r from-[#4585AC] to-[#1F3E51]"}
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-500">
+                  <span className="text-[14px] text-slate-500">
                     {quest.pct}% Selesai
                   </span>
-                  <span className="text-xs font-bold text-amber-600">
+                  <span className="text-[14px] font-bold text-amber-600">
                     🪙 {quest.reward}
                   </span>
                 </div>
@@ -298,17 +304,17 @@ export default function Dashboard() {
             {LEAGUE_RANKINGS.map(({ rank, name, xp, medal }) => (
               <div
                 key={rank}
-                className="flex items-center gap-3 bg-[#D8EAF3] rounded-xl px-3 py-2.5 border border-slate-100"
+                className="flex items-center gap-4 bg-[#D8EAF3] rounded-xl px-3 py-2.5 border border-slate-100"
               >
-                <span className="text-base w-6 text-center">{medal}</span>
-                <div className="w-8 h-8 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center shrink-0">
-                  <User size={14} className="text-slate-500" />
+                <span className="text-[25px] w-6 text-center">{medal}</span>
+                <div className="w-10 h-10 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center shrink-0">
+                  <User size={20} className="text-slate-500" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-slate-800 truncate">
+                  <p className="text-base font-semibold text-slate-800 truncate">
                     {name}
                   </p>
-                  <p className="text-xs text-slate-500">{xp}</p>
+                  <p className="text-[14px] text-slate-500">{xp}</p>
                 </div>
               </div>
             ))}

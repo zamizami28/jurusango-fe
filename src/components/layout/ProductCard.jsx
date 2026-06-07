@@ -28,7 +28,7 @@ export default function ProductCard({
   return (
     <div
       className={[
-        "bg-white rounded-2xl border transition-all duration-200 flex flex-col",
+        "bg-white rounded-2xl border transition-all duration-200 flex flex-col h-full",
         "hover:shadow-md hover:-translate-y-0.5",
         featured ? "border-slate-300 shadow-sm" : "border-slate-100 shadow-sm",
       ].join(" ")}
@@ -39,8 +39,10 @@ export default function ProductCard({
         <div className="flex items-start justify-between mb-3">
           <span
             className={[
-              "flex items-center justify-center rounded-xl text-xl",
-              isSubscription ? "w-10 h-10 bg-amber-50" : "w-9 h-9 bg-slate-50",
+              "flex items-center justify-center rounded-xl text-3xl",
+              isSubscription
+                ? "w-10 h-10 bg-amber-50"
+                : "w-10 h-10 bg-slate-50",
             ].join(" ")}
             role="img"
             aria-label={title}
@@ -63,25 +65,23 @@ export default function ProductCard({
         {/* Title */}
         <h3
           className={[
-            "font-extrabold text-[#25485E] leading-snug mb-1",
-            isSubscription ? "text-base" : "text-sm",
+            "font-extrabold text-[#25485E] leading-snug mb-1 text-xl",
           ].join(" ")}
         >
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-xs text-slate-400 leading-relaxed mb-3 flex-1">
+        <p className="text-base text-slate-400 leading-relaxed mb-3 flex-1">
           {description}
         </p>
 
-        {/* Feature list — only for Langganan cards */}
         {features.length > 0 && (
           <ul className="space-y-1 mb-4">
             {features.map((f) => (
               <li
                 key={f}
-                className="flex items-start gap-1.5 text-xs text-slate-500"
+                className="flex items-start gap-1.5 text-base text-slate-500"
               >
                 <span className="text-emerald-500 font-bold mt-px leading-tight">
                   ✓
@@ -97,7 +97,7 @@ export default function ProductCard({
       <div className="px-5 pb-5">
         <button
           className={[
-            "w-full py-2.5 rounded-xl text-sm font-bold tracking-wide",
+            "w-full py-2.5 rounded-xl text-base font-bold tracking-wide",
             "transition-all duration-150 active:scale-[0.98]",
             "bg-linear-to-r from-[#3E799E] to-[#284E65] hover:bg-slate-800 text-white",
           ].join(" ")}
