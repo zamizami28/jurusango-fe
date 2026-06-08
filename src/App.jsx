@@ -53,6 +53,14 @@ export default function App() {
           }
         />
         <Route
+          path="/rewards"
+          element={
+            <Layout>
+              <Placeholder title="Rewards" />
+            </Layout>
+          }
+        />
+        <Route
           path="/product"
           element={
             <Layout>

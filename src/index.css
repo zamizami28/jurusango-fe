@@ -2,4 +2,5 @@
 @import "tailwindcss";
 @theme {
   --font-sans: "Montserrat", sans-serif;
+  --text-2xs: 14px;
 }

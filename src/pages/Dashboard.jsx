@@ -100,7 +100,7 @@ function StatCard({ icon, value, label, trend, trendPct, iconBg }) {
     <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 flex flex-col gap-1">
       <div className="flex items-center justify-between mb-1">
         <span
-          className={`text-xl w-9 h-9 flex items-center justify-center rounded-xl ${iconBg}`}
+          className={`text-2xl w-12 h-12 flex items-center justify-center rounded-xl ${iconBg}`}
         >
           {icon}
         </span>
@@ -114,7 +114,9 @@ function StatCard({ icon, value, label, trend, trendPct, iconBg }) {
       <p className="text-2xl font-extrabold text-slate-800 tracking-tight leading-none">
         {value}
       </p>
-      <p className="text-xs text-slate-500 font-medium">{label}</p>
+      <p className="sm:text-xs lg:text-base text-slate-500 font-medium">
+        {label}
+      </p>
     </div>
   );
 }
@@ -201,13 +203,13 @@ export default function Dashboard() {
         <div className="grid grid-cols-2 gap-6">
           {/* Asesmen Umum */}
           <div className="bg-[#D8EAF3] rounded-2xl p-6">
-            <p className="text-xs font-semibold text-slate-500 mb-3 text-center tracking-wide uppercase">
+            <p className="text-base font-semibold text-slate-600 mb-3 text-center tracking-wide uppercase">
               Asesmen Umum
             </p>
             <div className="space-y-3">
               {ASSESSMENT_UMUM.map(({ subject, pct }) => (
                 <div key={subject} className="flex items-center gap-3">
-                  <span className="text-xs text-slate-600 font-medium w-20 shrink-0">
+                  <span className="text-xs lg:text-2xs text-slate-600 font-medium w-20 lg:w-24 shrink-0">
                     {subject}
                   </span>
                   <div className="flex-1">
@@ -226,13 +228,13 @@ export default function Dashboard() {
 
           {/* OVR Asesmen Jurusan */}
           <div className="bg-[#D8EAF3] rounded-2xl p-6">
-            <p className="text-xs font-semibold text-slate-500 mb-3 text-center tracking-wide uppercase">
+            <p className="text-base font-semibold text-slate-600 mb-3 text-center tracking-wide uppercase">
               Asesmen Jurusan
             </p>
             <div className="space-y-3">
               {OVR_JURUSAN.map(({ jurusan, score }) => (
                 <div key={jurusan} className="flex items-center gap-3">
-                  <span className="text-xs text-slate-600 font-medium w-24 shrink-0">
+                  <span className="text-xs lg:text-2xs text-slate-600 font-medium w-24 lg:w-28 shrink-0">
                     {jurusan}
                   </span>
                   <div className="flex-1">

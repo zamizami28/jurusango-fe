@@ -10,6 +10,7 @@ import {
   GraduationCap,
   ChevronLeft,
   Menu,
+  Gift,
 } from "lucide-react";
 
 // ─── Dummy Data ────────────────────────────────────────────────────────────────
@@ -19,6 +20,7 @@ const NAV_ITEMS = [
   { label: "Assessment", to: "/assessment", icon: Brain },
   { label: "Try Out SNBT", to: "/tryout", icon: ClipboardList },
   { label: "Leaderboard", to: "/leaderboard", icon: Trophy },
+  { label: "Rewards", to: "/rewards", icon: Gift },
   { label: "Product", to: "/product", icon: ShoppingBag },
   { label: "Profile", to: "/profile", icon: User },
 ];
@@ -50,11 +52,10 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         <div
           className={`flex items-center gap-2 select-none overflow-hidden transition-all duration-300 ${isOpen ? "opacity-100 w-auto" : "opacity-0 w-0"}`}
         >
-          {/* Nanti dirubah logo JurusanGo */}
-          <div className="relative min-w-9 h-9 rounded-xl bg-linear-to-br from-blue-500 to-teal-400 flex items-center justify-center shadow-md shadow-blue-200">
-            <GraduationCap className="w-5 h-5 text-white" strokeWidth={1.8} />
+          <div className="relative w-9 h-9 flex">
+            <img src="/src/assets/logo.svg" />
           </div>
-          <span className="text-xl font-extrabold tracking-tight text-[#1F3D50] whitespace-nowrap">
+          <span className="text-xl font-extrabold tracking-tight text-[#1F3D50] whitespace-nowrap group-hover:">
             Jurusan<span className="text-[#4282AA]">Go</span>
           </span>
         </div>

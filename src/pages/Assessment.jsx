@@ -77,7 +77,7 @@ function AssessmentTypeCard({
       {/* CTA */}
       <button
         onClick={onStart}
-        className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-sm font-bold tracking-wide transition-all duration-150 active:scale-[0.98] flex items-center justify-center gap-2"
+        className="w-full py-3 rounded-xl bg-linear-to-r from-[#3E799E] to-[#284E65] hover:bg-slate-900 text-white text-sm font-bold tracking-wide transition-all duration-150 active:scale-[0.98] flex items-center justify-center gap-2"
       >
         Mulai Asesmen
         <ArrowRight size={15} />
@@ -103,7 +103,7 @@ function JurusanRow({ label, premium, onStart, index }) {
       </div>
       <button
         onClick={onStart}
-        className="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold tracking-wide transition-all duration-150 active:scale-[0.97] flex items-center gap-1.5 group-hover:gap-2.5"
+        className="px-5 py-2 rounded-xl bg-linear-to-r from-[#3E799E] to-[#284E65] hover:bg-slate-900 text-white text-xs font-bold tracking-wide transition-all duration-150 active:scale-[0.97] flex items-center gap-1.5 group-hover:gap-2.5"
       >
         Mulai Assesment
         <ChevronRight size={13} />
@@ -149,10 +149,11 @@ export default function Assessment() {
 
       {/* ── Daftar Assessment Jurusan ── */}
       <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="text-base font-extrabold text-slate-800">
-            Daftar Assesment Jurusan
+        <div className="relative flex items-center justify-between mb-5">
+          <h2 className="absolute left-1/2 -translate-x-1/2 sm:text-xl lg:text-2xl font-extrabold text-slate-700 tracking-wide">
+            Daftar Asesmen Jurusan
           </h2>
+          <div></div>
           <Link
             to="/product"
             className="text-sm text-blue-600 font-semibold hover:underline flex items-center gap-1"

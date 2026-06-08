@@ -166,7 +166,7 @@ function StatCard({ icon: Icon, value, label, iconBg, iconColor }) {
       <p className="text-2xl font-extrabold text-slate-800 tracking-tight leading-none">
         {value}
       </p>
-      <p className="text-xs text-slate-500 font-medium">{label}</p>
+      <p className="sm:text-xs lg:text-base text-slate-500 font-medium">{label}</p>
     </div>
   );
 }
@@ -178,7 +178,7 @@ function FilterPill({ label, active, onClick }) {
       className={[
         "px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-150 flex-shrink-0",
         active
-          ? "bg-slate-800 text-white shadow-sm"
+          ? "bg-linear-to-r from-[#3E799E] to-[#284E65] text-white shadow-sm"
           : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700",
       ].join(" ")}
     >
@@ -199,10 +199,10 @@ function TryOutCard({ item }) {
     <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
       {/* Title row */}
       <div className="flex items-start gap-2 mb-2">
-        <h3 className="text-base font-extrabold text-slate-800 flex-1 leading-snug">
+        <h3 className="text-base font-extrabold text-[#25485E] flex-1 leading-snug">
           {item.title}
         </h3>
-        <div className="flex gap-1.5 flex-shrink-0">
+        <div className="flex gap-1.5 shrink-0">
           {item.badge && (
             <span
               className={[
@@ -275,7 +275,7 @@ function TryOutCard({ item }) {
       )}
 
       {/* CTA button */}
-      <button className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-sm font-bold tracking-wide transition-all duration-150 active:scale-[0.98] flex items-center justify-center gap-1.5">
+      <button className="w-full py-2.5 rounded-xl bg-linear-to-r from-[#3E799E] to-[#284E65] hover:bg-slate-900 text-white text-sm font-bold tracking-wide transition-all duration-150 active:scale-[0.98] flex items-center justify-center gap-1.5">
         {isSelesai ? "Lihat Pembahasan" : "Mulai Try Out"}
         <ChevronRight size={14} />
       </button>
@@ -285,13 +285,13 @@ function TryOutCard({ item }) {
 
 function TipsWidget() {
   return (
-    <div className="bg-slate-800 rounded-2xl p-5 text-white sticky top-6">
+    <div className="bg-[#3E799E] rounded-2xl p-5 text-white sticky top-6">
       {/* Header */}
       <div className="flex items-center gap-2 mb-4">
-        <div className="w-9 h-9 rounded-xl bg-red-500/20 flex items-center justify-center text-lg">
+        <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center text-2xl">
           🎯
         </div>
-        <h3 className="font-extrabold text-sm leading-tight">
+        <h3 className="font-extrabold text-base leading-tight">
           Tips Mengerjakan SNBT
         </h3>
       </div>
@@ -301,9 +301,9 @@ function TipsWidget() {
         {SNBT_TIPS.map((tip) => (
           <li
             key={tip}
-            className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed"
+            className="flex items-start gap-2 text-xs text-slate-200 leading-relaxed"
           >
-            <span className="text-amber-400 font-black mt-px flex-shrink-0">
+            <span className="text-amber-400 font-black mt-px shrink-0">
               ✦
             </span>
             {tip}
@@ -345,8 +345,8 @@ export default function TryOut() {
     <div className="pb-8">
       {/* ── Page Header ── */}
       <div className="bg-white rounded-2xl border border-slate-100 shadow-sm px-6 py-4 mb-5">
-        <h1 className="text-xl font-extrabold text-slate-800">Try Out SNBT</h1>
-        <p className="text-sm text-slate-400 mt-0.5">
+        <h1 className="text-[25px] font-extrabold text-[#25485E]">Try Out SNBT</h1>
+        <p className="text-sm text-slate-500 mt-0.5">
           Latih kemampuanmu dengan berbagai paket Try Out SNBT
         </p>
       </div>
@@ -359,7 +359,7 @@ export default function TryOut() {
       </div>
 
       {/* ── Two-column layout: main + sidebar ── */}
-      <div className="grid grid-cols-[1fr_260px] gap-5 items-start">
+      <div className="grid grid-cols-1 gap-5 items-start">
         {/* Left: Search + Filter + List */}
         <div className="space-y-4">
           {/* Search + type filter row */}
@@ -380,7 +380,7 @@ export default function TryOut() {
                 />
               </div>
               {/* Type filter pills (inline on same row as search) */}
-              <div className="flex gap-2 flex-shrink-0">
+              <div className="flex gap-2 shrink-0">
                 {TYPE_FILTERS.map((f) => (
                   <FilterPill
                     key={f}
