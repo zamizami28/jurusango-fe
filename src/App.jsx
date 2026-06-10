@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
-import Product from "./pages/Product";
 import Assessment from "./pages/Assessment";
 import TryOut from "./pages/TryOut";
+import Leaderboard from "./pages/Leaderboard";
+import Product from "./pages/Product";
+import Profile from "./pages/Profile";
 
 // Placeholder pages — replace with real pages in future phases
 const Placeholder = ({ title }) => (
@@ -48,7 +50,7 @@ export default function App() {
           path="/leaderboard"
           element={
             <Layout>
-              <Placeholder title="Leaderboard" />
+              <Leaderboard />
             </Layout>
           }
         />
@@ -72,7 +74,7 @@ export default function App() {
           path="/profile"
           element={
             <Layout>
-              <Placeholder title="Profile" />
+              <Profile />
             </Layout>
           }
         />
